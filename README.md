@@ -1,4 +1,4 @@
-# NestJS Template
+# Payment Service [Backend]
 
 ## 📓 Commands
 

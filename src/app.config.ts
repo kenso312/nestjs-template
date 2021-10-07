@@ -43,7 +43,7 @@ export class AppConfig {
       cli: { entitiesDir, migrationsDir, subscribersDir },
       extra: {
         // For SQL Server that has self signed certificate error, enable below setting
-        // trustServerCertificate: true,
+        trustServerCertificate: true,
       },
     };
   }
