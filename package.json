@@ -32,7 +32,7 @@
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1",
     "fastify": "^3.22.0",
-    "mssql": "^7.2.1",
+    "mysql2": "^2.3.0",
     "nestjs-i18n": "^8.1.6",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",

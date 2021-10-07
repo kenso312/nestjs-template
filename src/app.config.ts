@@ -24,9 +24,9 @@ export class AppConfig {
   }
 
   public static getTypeOrmConfig(): TypeOrmModuleOptions {
-    const entitiesDir = 'src/database/entities';
-    const migrationsDir = 'src/database/migrations';
-    const subscribersDir = 'src/database/subscribers';
+    const entitiesDir = 'database/entities';
+    const migrationsDir = 'database/migrations';
+    const subscribersDir = 'database/subscribers';
     return {
       type: process.env.DB_TYPE as any,
       host: process.env.DB_HOST,
@@ -35,15 +35,19 @@ export class AppConfig {
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       logging: process.env.DEBUG === 'true',
-      debug: process.env.DEBUG === 'true',
+      // debug: process.env.DEBUG === 'true',
       synchronize: process.env.NODE_ENV === NodeEnv.LOCAL,
-      entities: [`${entitiesDir}/*.entity{.ts,.js}`],
-      migrations: [`${migrationsDir}/*.migration{.ts,.js}`],
-      subscribers: [`${subscribersDir}/*.subscriber{.ts,.js}`],
-      cli: { entitiesDir, migrationsDir, subscribersDir },
+      entities: [`${__dirname}/${entitiesDir}/*.entity.{ts,js}`],
+      migrations: [`${__dirname}/${migrationsDir}/*.migration.{ts,js}`],
+      subscribers: [`${__dirname}/${subscribersDir}/*.subscriber.{ts,js}`],
+      cli: {
+        entitiesDir: `src/${entitiesDir}`,
+        migrationsDir: `src/${migrationsDir}`,
+        subscribersDir: `src/${subscribersDir}`,
+      },
       extra: {
         // For SQL Server that has self signed certificate error, enable below setting
-        trustServerCertificate: true,
+        // trustServerCertificate: true,
       },
     };
   }

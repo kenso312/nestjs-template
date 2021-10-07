@@ -40,8 +40,7 @@ const copyFileAndReplaceVariable = (DIRECTORY, FILE) => {
     const result = data
       .replace(/\/\/ /g, '')
       .replace(/_?template/g, MODULE_NAME)
-      .replace(/Template/g, MODULE_NAME.capitalize())
-      .replace('{ synchronize: false }', '');
+      .replace(/Template/g, MODULE_NAME.capitalize());
 
     fs.writeFile(TARGET_FILE, result, { flag: 'w' }, (writeErr) => {
       if (writeErr) {

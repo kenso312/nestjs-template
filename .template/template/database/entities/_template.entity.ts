@@ -7,7 +7,7 @@
 //   UpdateDateColumn,
 // } from 'typeorm';
 
-// @Entity({ synchronize: false })
+// @Entity()
 // export class TemplateEntity extends BaseEntity {
 //   @PrimaryGeneratedColumn()
 //   id: number;
