@@ -16,11 +16,15 @@ interface ValidatorFailResponse {
 @Catch(BadRequestException)
 export class ValidationExceptionFilter implements ExceptionFilter {
   catch(exception: BadRequestException, host: ArgumentsHost) {
-    const validatorResponse = <ValidatorFailResponse>exception.getResponse();
+    const badRequestResponse = <ValidatorFailResponse>exception.getResponse();
+
+    if (typeof badRequestResponse.message !== 'object')
+      throw new Error(badRequestResponse.message);
+
     const finalResponse: HttpFailResponse = {
       error: {
         code: 20002,
-        message: validatorResponse.message[0],
+        message: badRequestResponse.message[0],
       },
     };
     const response = host.switchToHttp().getResponse<FastifyReply>();

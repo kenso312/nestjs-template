@@ -6,12 +6,13 @@ import { ConfigModule } from '@nestjs/config';
 import { I18nModule } from 'nestjs-i18n';
 import { Module } from '@nestjs/common';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { TransactionModule } from '@/modules/transaction/transaction.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
-    // Allow to access .env file
-    ConfigModule.forRoot(),
+    // Allow to access .env file and validate env variable
+    ConfigModule.forRoot(AppConfig.getInitConifg()),
     // Internationalization and localization
     I18nModule.forRoot(AppConfig.getI18nConfig()),
     // Protect application from brute-force attacks
@@ -19,6 +20,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     // Database
     TypeOrmModule.forRoot(AppConfig.getTypeOrmConfig()),
     // App
+    TransactionModule,
   ],
   controllers: [AppController],
   providers: [

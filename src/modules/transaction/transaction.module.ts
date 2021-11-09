@@ -1,11 +1,14 @@
-import { Module } from '@nestjs/common';
+import { CacheModule, Module } from '@nestjs/common';
 import { TransactionController } from './transaction.controller';
 import { TransactionRepository } from '@repo/transaction.repository';
 import { TransactionService } from './transaction.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([TransactionRepository])],
+  imports: [
+    TypeOrmModule.forFeature([TransactionRepository]),
+    CacheModule.register(),
+  ],
   controllers: [TransactionController],
   providers: [TransactionService],
 })

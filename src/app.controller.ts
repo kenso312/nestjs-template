@@ -1,5 +1,5 @@
 import { AppService } from '@/app.service';
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 
 @Controller()
 export class AppController {
@@ -8,10 +8,5 @@ export class AppController {
   @Get('version')
   async getVersion() {
     return this.appService.getVersion();
-  }
-
-  @Post('test')
-  async test(@Body() _body: any) {
-    return 'Hello';
   }
 }

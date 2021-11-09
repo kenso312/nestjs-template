@@ -7,6 +7,8 @@ import {
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+// Google JSON Guide
+// https://stackoverflow.com/a/23708903/11440474
 interface HttpSuccessResponse<T> {
   data: T;
 }
