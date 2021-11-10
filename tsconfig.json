@@ -17,7 +17,7 @@
       "@migrate/*": ["src/database/migrations/*"],
       "@repo/*": ["src/database/repositories/*"],
       "@sub/*": ["src/database/subscribers/*"],
-      "@util/*": ["src/utils/*"]
+      "@util/*": ["src/shared/*"]
     },
     "removeComments": true,
     "resolveJsonModule": true,

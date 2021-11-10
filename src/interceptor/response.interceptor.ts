@@ -4,15 +4,9 @@ import {
   Injectable,
   NestInterceptor,
 } from '@nestjs/common';
+import { HttpSuccessResponse } from '@/shared/interfaces';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
-// Google JSON Guide
-// https://stackoverflow.com/a/23708903/11440474
-
-interface HttpSuccessResponse<T> {
-  data: T;
-}
 
 // Re-format all non-error response
 @Injectable()

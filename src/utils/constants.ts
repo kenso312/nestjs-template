@@ -1,1 +1,0 @@
-// Share global constant data

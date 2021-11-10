@@ -10,7 +10,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { PaymentMethodEntity } from '@entity/paymentMethod.entity';
-import { PaymentStatus } from '@util/enums/_index';
+import { PaymentStatus } from '@/shared/enums/_index';
 
 @Entity({ name: 'transaction' })
 export class TransactionEntity extends BaseEntity {

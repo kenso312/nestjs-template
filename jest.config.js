@@ -14,6 +14,6 @@ module.exports = {
     '^@migrate/(.*)$': '<rootDir>/database/migrations/$1',
     '^@repo/(.*)$': '<rootDir>/database/repositories/$1',
     '^@sub/(.*)$': '<rootDir>/database/subscribers/$1',
-    '^@util/(.*)$': '<rootDir>/utils/$1',
+    '^@share/(.*)$': '<rootDir>/shared/$1',
   },
 };

@@ -5,7 +5,7 @@ import {
   ExceptionFilter,
 } from '@nestjs/common';
 import { FastifyReply } from 'fastify';
-import { HttpFailResponse } from '@/utils/interfaces';
+import { HttpFailResponse } from '@/shared/interfaces';
 
 export const VALIDATION_ERROR = 'VALIDATION_ERROR';
 

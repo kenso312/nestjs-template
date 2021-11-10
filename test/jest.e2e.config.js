@@ -6,7 +6,7 @@ module.exports = {
     '^@migrate/(.*)$': '<rootDir>/src/database/migrations/$1',
     '^@repo/(.*)$': '<rootDir>/src/database/repositories/$1',
     '^@sub/(.*)$': '<rootDir>/src/database/subscribers/$1',
-    '^@util/(.*)$': '<rootDir>/utils/$1',
+    '^@share/(.*)$': '<rootDir>/shared/$1',
   },
   rootDir: '../',
   testEnvironment: 'node',

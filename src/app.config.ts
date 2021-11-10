@@ -2,7 +2,7 @@ import * as Joi from 'joi';
 import * as path from 'path';
 import { ConfigModuleOptions } from '@nestjs/config';
 import { HeaderResolver, I18nJsonParser, I18nOptions } from 'nestjs-i18n';
-import { NodeEnv } from '@/utils/enums/_index';
+import { NodeEnv } from '@/shared/enums/_index';
 import { ThrottlerModuleOptions } from '@nestjs/throttler';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 

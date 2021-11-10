@@ -2,7 +2,7 @@ import { CreateTransactionDto } from './dto/_index';
 import { I18nRequestScopeService } from 'nestjs-i18n';
 import { Injectable, Logger } from '@nestjs/common';
 import { NormalException } from '@/exception/normal-exception';
-import { PaymentStatus } from '@/utils/enums/_index';
+import { PaymentStatus } from '@/shared/enums/_index';
 import { TransactionRepository } from '@repo/transaction.repository';
 
 @Injectable()

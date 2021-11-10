@@ -158,7 +158,7 @@ In the tsconfig.json file, there has a 'paths' attribute that can setup alias pa
     "@migrate/*": ["src/database/migrations/*"],
     "@repo/*": ["src/database/repositories/*"],
     "@sub/*": ["src/database/subscribers/*"],
-    "@util/*": ["src/utils/*"]
+    "@share/*": ["src/shared/*"]
   },
   ...
 }
@@ -173,7 +173,7 @@ moduleNameMapper: {
   '^@migrate/(.*)$': '<rootDir>/database/migrations/$1',
   '^@repo/(.*)$': '<rootDir>/database/repositories/$1',
   '^@sub/(.*)$': '<rootDir>/database/subscribers/$1',
-  '^@util/(.*)$': '<rootDir>/utils/$1',
+  '^@share/(.*)$': '<rootDir>/shared/$1',
 },
 ```
 

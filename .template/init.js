@@ -5,7 +5,7 @@ const { exec } = require('child_process');
 const { exception } = require('console');
 
 const DEST_FOLDER = path.join('src');
-const UTIL_FOLDER = path.join('src', 'utils');
+const UTIL_FOLDER = path.join('src', 'shared');
 
 const TEMPLATE_FOLDER = path.join('.template', 'template');
 
@@ -99,8 +99,8 @@ const generateModuleTemplate = () => {
   generateObjectTemplate(path.join('database', 'repositories'));
 };
 
-const generateUtilsTemplate = (utilType) => {
-  generateObjectTemplate(path.join('utils', utilType));
+const generateSharedTemplate = (utilType) => {
+  generateObjectTemplate(path.join('shared', utilType));
   modifyIndex(path.join(UTIL_FOLDER, utilType));
 };
 
@@ -114,11 +114,8 @@ const generateUtilsTemplate = (utilType) => {
       generateModuleTemplate();
       break;
     case 'enums':
-      generateUtilsTemplate('enums');
+      generateSharedTemplate('enums');
       break;
-    // case 'type':
-    //   generateUtilsTemplate('types');
-    //   break;
     case 'entity':
       generateObjectTemplate(path.join('database', 'entities'));
       generateObjectTemplate(path.join('database', 'repositories'));
