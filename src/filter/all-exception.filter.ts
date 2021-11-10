@@ -1,13 +1,7 @@
 import { ArgumentsHost, Catch, ExceptionFilter } from '@nestjs/common';
 import { FastifyReply } from 'fastify';
+import { HttpFailResponse } from '@/utils/interfaces';
 import { I18nService } from 'nestjs-i18n';
-
-export interface HttpFailResponse {
-  readonly error: {
-    readonly message: string;
-    readonly code: number;
-  };
-}
 
 interface Exception {
   readonly response: {

@@ -1,6 +1,6 @@
 import { ArgumentsHost, Catch, ExceptionFilter } from '@nestjs/common';
 import { FastifyReply } from 'fastify';
-import { HttpFailResponse } from './all-exception.filter';
+import { HttpFailResponse } from '@/utils/interfaces';
 import { I18nService } from 'nestjs-i18n';
 import { ThrottlerException } from '@nestjs/throttler';
 

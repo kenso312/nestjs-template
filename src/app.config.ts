@@ -52,7 +52,7 @@ export class AppConfig {
 
   public static getI18nConfig(): I18nOptions {
     return {
-      fallbackLanguage: 'en',
+      fallbackLanguage: 'en-US',
       parser: I18nJsonParser,
       parserOptions: {
         path: path.join(__dirname, '..', 'i18n'),
