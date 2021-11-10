@@ -1,7 +1,7 @@
 {
   "error_msg": {
     "json_parse": "JSON 解析錯誤，請檢查您請求內容的 JSON 格式",
-    "unexcepted": "未知錯誤"
+    "unexpected": "未知錯誤"
   },
   "version": "版本:"
 }

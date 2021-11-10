@@ -1,7 +1,7 @@
 {
   "error_msg": {
     "json_parse": "JSON parse error, please check your JSON format of the request body",
-    "unexcepted": "Unexpected error"
+    "unexpected": "Unexpected error"
   },
   "version": "Version:"
 }

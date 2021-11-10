@@ -7,19 +7,24 @@ import {
 import { FastifyReply } from 'fastify';
 import { HttpFailResponse } from './all-exception.filter';
 
+export const VALIDATION_ERROR = 'VALIDATION_ERROR';
+
 interface ValidatorFailResponse {
   statusCode: number;
-  message: string[];
+  message: string[] | string;
   error: string;
 }
 
+// Re-format error response of class-validator
 @Catch(BadRequestException)
 export class ValidationExceptionFilter implements ExceptionFilter {
   catch(exception: BadRequestException, host: ArgumentsHost) {
     const badRequestResponse = <ValidatorFailResponse>exception.getResponse();
 
-    if (typeof badRequestResponse.message !== 'object')
-      throw new Error(badRequestResponse.message);
+    // Since class-validator library will only throw BadRequestException, we need to do extra checking here,
+    // all exception not related to validation will throw to all exception filter
+    if (badRequestResponse.error !== VALIDATION_ERROR)
+      throw new Error(exception.message);
 
     const finalResponse: HttpFailResponse = {
       error: {

@@ -1,7 +1,7 @@
-import { BadRequestException } from '@nestjs/common';
+import { HttpException, HttpStatus } from '@nestjs/common';
 
-export class PostNotFoundException extends BadRequestException {
-  constructor(msg: string, errorCode: number) {
-    super({ code: errorCode }, msg);
+export class NormalException extends HttpException {
+  constructor(message: string, code: number, isTranslateKey = true) {
+    super({ message, code, isTranslateKey }, HttpStatus.BAD_REQUEST);
   }
 }

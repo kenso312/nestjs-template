@@ -41,6 +41,7 @@ export class AppConfig {
         DB_PASSWORD: Joi.string(),
         DB_NAME: Joi.string(),
         FRONTEND_URL: Joi.string().uri(),
+        MQ_HOST: Joi.string().uri(),
         NODE_ENV: Joi.string().valid(...validNodeEnvList),
       }),
       validationOptions: {
@@ -57,7 +58,7 @@ export class AppConfig {
         path: path.join(__dirname, '..', 'i18n'),
         watch: true,
       },
-      resolvers: [{ use: HeaderResolver, options: ['lang', 'locale'] }],
+      resolvers: [{ use: HeaderResolver, options: ['lang'] }],
     };
   }
 

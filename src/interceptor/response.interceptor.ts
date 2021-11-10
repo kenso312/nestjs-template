@@ -9,10 +9,12 @@ import { map } from 'rxjs/operators';
 
 // Google JSON Guide
 // https://stackoverflow.com/a/23708903/11440474
+
 interface HttpSuccessResponse<T> {
   data: T;
 }
 
+// Re-format all non-error response
 @Injectable()
 export class ResponseInterceptor<T>
   implements NestInterceptor<T, HttpSuccessResponse<T>>

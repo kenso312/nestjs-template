@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class CreateTransactionDto {
   @IsNotEmpty()
@@ -7,13 +7,21 @@ export class CreateTransactionDto {
 
   @IsNotEmpty()
   @IsString()
-  readonly paymentMethodId: string;
-
-  @IsOptional()
-  @IsString()
-  readonly userId?: string;
+  readonly callbackURL: string;
 
   @IsNotEmpty()
   @IsString()
-  readonly platformId: string;
+  readonly type: string;
+
+  // @IsNotEmpty()
+  // @IsString()
+  // readonly paymentMethodId: string;
+
+  // @IsOptional()
+  // @IsString()
+  // readonly userId?: string;
+
+  // @IsNotEmpty()
+  // @IsString()
+  // readonly platformId: string;
 }

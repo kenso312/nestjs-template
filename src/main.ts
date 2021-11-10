@@ -1,8 +1,3 @@
-import {
-  AllExceptionFilter,
-  ThrottlerExceptionFilter,
-  ValidationExceptionFilter,
-} from './filter/_index';
 import { AppModule } from '@/app.module';
 import { BadRequestException, ValidationPipe } from '@nestjs/common';
 import {
@@ -12,6 +7,7 @@ import {
 import { I18nService } from 'nestjs-i18n';
 import { NestFactory } from '@nestjs/core';
 import { ResponseInterceptor } from '@/interceptor/response.interceptor';
+import { Transport } from '@nestjs/microservices';
 import { ValidationError } from 'class-validator';
 
 (async () => {
@@ -24,6 +20,20 @@ import { ValidationError } from 'class-validator';
     fastifyAdapter
   );
 
+  app.connectMicroservice({
+    options: {
+      transport: Transport.RMQ,
+      urls: [process.env.MQ_HOST],
+      queue: 'payment_queue',
+      queueOptions: {
+        durable: false,
+      },
+    },
+  });
+
+  // Since NestJS filter cannot catch JSON parse error in request body [Fastify layer catch this error]
+  // but Fastify's error response format do not match our format here because
+  // so we have to do extra step here to sync error response format
   const i18n = app.get<I18nService>(I18nService);
   fastifyAdapter.setErrorHandler(async (error, _request, reply) => {
     reply.send({
@@ -34,13 +44,10 @@ import { ValidationError } from 'class-validator';
     });
   });
 
+  app.setGlobalPrefix('api');
+
   // https://docs.nestjs.com/techniques/versioning#versioning
   app.enableVersioning();
-
-  // Enable this if you have CORS issue in local development
-  // app.enableCors();
-
-  app.setGlobalPrefix('api');
 
   // Allowing to do validation through DTO
   app.useGlobalPipes(
@@ -49,12 +56,6 @@ import { ValidationError } from 'class-validator';
         return new BadRequestException({ ...errors, isValidationError: true });
       },
     })
-  );
-
-  app.useGlobalFilters(
-    new AllExceptionFilter(),
-    new ThrottlerExceptionFilter(),
-    new ValidationExceptionFilter()
   );
 
   app.useGlobalInterceptors(new ResponseInterceptor());
