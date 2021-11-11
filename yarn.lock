@@ -748,13 +748,6 @@
     "@types/yargs" "^16.0.0"
     chalk "^4.0.0"
 
-"@nestjs/axios@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@nestjs/axios/-/axios-0.0.3.tgz#f53ba265e15687b9acb036642ed5f29998695bd1"
-  integrity sha512-Cc+D2S2uesthRpalmZEPdm5wF2N9ji4l9Wsb2vFaug/CVWg2BoegHm0L1jzFUL+6kS+mXWSFvwXJmofv+7bajw==
-  dependencies:
-    axios "0.23.0"
-
 "@nestjs/cli@^8.0.0":
   version "8.1.4"
   resolved "https://registry.yarnpkg.com/@nestjs/cli/-/cli-8.1.4.tgz#8105c791eae3ead67e8ba7b4df2c0f45a445d0cd"
@@ -1686,13 +1679,6 @@ avvio@^7.1.2:
     debug "^4.0.0"
     fastq "^1.6.1"
     queue-microtask "^1.1.2"
-
-axios@0.23.0:
-  version "0.23.0"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.23.0.tgz#b0fa5d0948a8d1d75e3d5635238b6c4625b05149"
-  integrity sha512-NmvAE4i0YAv5cKq8zlDoPd1VLKAqX5oLuZKs8xkJa4qi6RGn0uhCYFjWtHHC9EM/MwOwYWOs53W+V0aqEXq1sg==
-  dependencies:
-    follow-redirects "^1.14.4"
 
 axios@0.24.0, axios@^0.24.0:
   version "0.24.0"
