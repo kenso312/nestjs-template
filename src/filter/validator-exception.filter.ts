@@ -1,38 +1,21 @@
-import {
-  ArgumentsHost,
-  BadRequestException,
-  Catch,
-  ExceptionFilter,
-} from '@nestjs/common';
+import { ArgumentsHost, Catch, ExceptionFilter } from '@nestjs/common';
 import { FastifyReply } from 'fastify';
 import { HttpFailResponse } from '@/shared/interfaces';
-
-export const VALIDATION_ERROR = 'VALIDATION_ERROR';
-
-interface ValidatorFailResponse {
-  statusCode: number;
-  message: string[] | string;
-  error: string;
-}
+import { ValidationException } from '@/exception/validation-exception';
 
 // Re-format error response of class-validator
-@Catch(BadRequestException)
+@Catch(ValidationException)
 export class ValidationExceptionFilter implements ExceptionFilter {
-  catch(exception: BadRequestException, host: ArgumentsHost) {
-    const badRequestResponse = <ValidatorFailResponse>exception.getResponse();
+  catch(exception: ValidationException, host: ArgumentsHost) {
+    const response = host.switchToHttp().getResponse<FastifyReply>();
+    const exceptionResponse = <{ message: string[] }>exception.getResponse();
 
-    // Since class-validator library will only throw BadRequestException, we need to do extra checking here,
-    // all exception not related to validation will throw to all exception filter
-    if (badRequestResponse.error !== VALIDATION_ERROR)
-      throw new Error(exception.message);
-
-    const finalResponse: HttpFailResponse = {
+    const data: HttpFailResponse = {
       error: {
         code: 20002,
-        message: badRequestResponse.message[0],
+        message: exceptionResponse.message[0],
       },
     };
-    const response = host.switchToHttp().getResponse<FastifyReply>();
-    response.status(422).send(finalResponse); // Unprocessable Entity
+    response.status(422).send(data); // Unprocessable Entity
   }
 }
